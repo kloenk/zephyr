@@ -120,6 +120,7 @@ def main():
     # Write the merged configuration and the C header
     print(kconf.write_config(args.config_out))
     print(kconf.write_autoconf(args.header_out))
+    print(kconf.write_rustcfg(args.rustcfg_out))
 
     # Write the list of parsed Kconfig files to a file
     write_kconfig_filenames(kconf, args.kconfig_list_out)
@@ -302,6 +303,8 @@ def parse_args():
                         help="Output configuration file")
     parser.add_argument("header_out",
                         help="Output header file")
+    parser.add_argument("rustcfg_out",
+                        help="Output rustcfg file")
     parser.add_argument("kconfig_list_out",
                         help="Output file for list of parsed Kconfig files")
     parser.add_argument("configs_in",
