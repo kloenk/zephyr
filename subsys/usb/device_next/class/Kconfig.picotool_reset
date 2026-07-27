@@ -1,0 +1,26 @@
+# Copyright (c) 2026 Fiona Behrens
+# SPDX-License-Identifier: Apache-2.0
+
+menuconfig USBD_PICOTOOL_RESET
+	bool "USB Picotool reset class"
+	depends on DT_HAS_RASPBERRYPI_USB_RESET_ENABLED
+	default y
+	help
+	  Picotool reset class to reset a rpi pico via picotool
+
+if USBD_PICOTOOL_RESET
+
+config USBD_PICOTOOL_RESET_TO_BOOTSEL
+	bool "Enable support to boolsel reset"
+	depends on SOC_FAMILY_RPI_PICO
+	default y
+
+config USBD_PICOTOOL_RESET_INIT_PRIORITY
+	int "Picotool reset init priority"
+	default KERNEL_INIT_PRIORITY_DEVICE
+
+module = USBD_PICOTOOL
+module-str = usbd picotool
+source "subsys/logging/Kconfig.template.log_config"
+
+endif

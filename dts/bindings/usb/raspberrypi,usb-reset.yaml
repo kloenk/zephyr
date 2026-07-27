@@ -1,0 +1,17 @@
+# Copyright (c) 2026 Fiona Behrens
+# SPDX-License-Identifier: Apache-2.0
+
+description: |
+  USB reset interface using the picotool reset interface.
+
+compatible: "raspberrypi,usb-reset"
+
+include: base.yaml
+
+on-bus: usb
+
+properties:
+  label:
+    description: |
+      The string defined by the label property is also used for the USB
+      interface string descriptor.
